@@ -9,7 +9,8 @@
 		    $(function(){
 				$("#form_categorie").change(function(){
 				var num_categorie = $(this).find("select[name=num_categorie]").val();
-				$('html,body').animate({scrollTop: $('#num_categorie').offset().top}, 'slow');
+				var balise = "#"+num_categorie;
+				$('html,body').animate({scrollTop: $(balise).offset().top}, 'slow');
 				});
 			});
 		</script>
@@ -41,7 +42,6 @@
 							</form>
 			  				<?php while ($data = $tourisme->fetch()) {  ?>
 							 <div id="<?= $data['Num_Cat'] ?>">
-								 <!-- <form action="index.php?action=devis" method="post"> -->
 								 	<form action="index.php?action=devis" method="post">
 									 <fieldset>
 									 	<legend><?= $data['Marq_Mod'] ?> | <?= $data['Nom_Mod'] ?></legend>
