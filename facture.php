@@ -16,8 +16,10 @@ $numero_clients = $numero_client->fetch(\PDO::FETCH_ASSOC);
 $nb_location = $db->prepare('SELECT COUNT(*) as nb_loc FROM Location WHERE Num_User = ?');
 $nb_location->execute([$numero_clients['Num_User']]);
 $nb_locations = $nb_location->fetch(\PDO::FETCH_ASSOC);
+$_SESSION['nb_loc'] = $nb_locations['nb_loc'];
 
 $Num_Tr_Pt = nb_tranche($_SESSION['prix_devis'], $_SESSION['Droit_User'], $nb_locations['nb_loc']);
+$_SESSION['Num_Tr_Pt'] = $Num_Tr_Pt;
 
 $_SESSION['date_depart'] = date("Y-m-d", strtotime($_SESSION['date_depart']));
 $_SESSION['date_arrivee'] = date("Y-m-d", strtotime($_SESSION['date_arrivee']));

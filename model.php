@@ -4,7 +4,7 @@ function dbconnect()
 {
 	try
 	{
-	    $db = new PDO('mysql:host=localhost;dbname=cnam_car_base;charset=utf8', 'root', '123Soleil!',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+	    $db = new PDO('mysql:host=localhost;dbname=cnam_car_base;charset=utf8', 'root', 'Alligator487§?§',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	    return $db;
 	}
 	catch(Exception $e)
@@ -12,10 +12,10 @@ function dbconnect()
 	    die('Erreur : '.$e->getMessage());
 	}
 }
-function getAgences()
+function getAgence()
 {
     $db = dbconnect(); 
-    $agence = $db->query('SELECT Num_AG, Nom_AG FROM Agence'); 
+    $agence = $db->query('SELECT * FROM Agence'); 
     return $agence;
 }
 function nb_jour($date_debut, $date_fin)
@@ -181,10 +181,15 @@ function getLocation($login)
 {
     $db = dbconnect();
         $info_location = $db->prepare('
-            SELECT * FROM Location
+            SELECT Pu_TTC_Loc, Nb_Tr_Pt, Duree_Loc, DATE_FORMAT(Date_Loc, \'%d-%m-%Y\') AS date_location FROM Location
+            JOIN Points 
+            ON Points.Num_Tr_Pt = Location.Num_Tr_Pt
             WHERE Num_User = (SELECT Num_User FROM Espace_User WHERE Mel_User = ?)
             ORDER BY Date_loc DESC
             ');
         $info_location->execute([$login]);
         return $info_location;
+
 }
+
+

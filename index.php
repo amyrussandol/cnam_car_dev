@@ -3,13 +3,16 @@ require('controler.php');
 
 if(isset($_GET['action'])){
 
+	if($_GET['action'] == 'test'){
+		afficheTest();
+	}
+
 	if($_GET['action'] == 'accueil'){
 		session_start();
-		if(isset($_SESSION['login']) && isset($_SESSION['Droit_User'])){
+		if (isset($_SESSION['login']) && isset($_SESSION['Droit_User'])){
 			$_SESSION = supprimeDevisClientConnecte($_SESSION['login'], $_SESSION['Droit_User']);
 			selectAgence();
-		}
-		else{
+		}else {
 			$_SESSION = [];
 			selectAgence();
 		}
@@ -68,9 +71,7 @@ if(isset($_GET['action'])){
 			$_SESSION = false;
 			afficheMentions();
 		}
-	}
-	else if($_GET['action'] == 'vehicules'){
-
+	}else if ($_GET['action'] == 'vehicules'){
 		session_start();
 		$_SESSION['ag_depart'] = $_POST['ag_depart'];
 		$_SESSION['ag_arrivee'] = $_POST['ag_arrivee'];
@@ -78,16 +79,13 @@ if(isset($_GET['action'])){
 		$_SESSION['date_arrivee'] = date("d-m-Y", strtotime($_POST['date_arrivee']));
 		$_SESSION['categorie'] = $_POST['categorie'];
 
-		if(!empty($_POST['categorie']) && $_POST['categorie'] == 1){
-
+		if (!empty($_POST['categorie']) && $_POST['categorie'] == 1){
 			selectTourisme($_POST['ag_depart']);
 
-		}
-		else if(!empty($_POST['categorie']) && $_POST['categorie'] == 7){
-
+		}else if(!empty($_POST['categorie']) && $_POST['categorie'] == 7){
 			selectUtilitaire($_POST['ag_depart']);
-		}
-		else{
+			
+		}else{
 			echo 'Impossible d\'afficher les véhicules';
 			echo "<br><a href=\"index.php\">cliquez ici pour retourner à l'accueil</a>";
 			?><pre><?php print_r($GLOBALS);?></pre><?php

@@ -38,7 +38,7 @@ if($_GET['action'] == 'login'){
 				}
 				else{
 
-					header('Location: index.php?action=espace_perso');
+					header('Location: index.php?action=accueil');
 				}			
 			} 
 			else{

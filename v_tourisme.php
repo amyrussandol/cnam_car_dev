@@ -20,17 +20,9 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<h1>Véhicules de tourisme</h1>
-							<p>
-								<a href="index.php?action=accueil">Accueil</a><span> | </span>
-								<a href="index.php?action=agence">Nos agences</a><span> | </span>	
-								<a href="index.php?action=nos_vehicules">Nos véhicules</a><span> | </span>	
-								<a href="index.php?action=cnam_car">Qui sommes nous</a><span> | </span>
-								<a href="index.php?action=faq">FAQ</a><span> | </span>
-								<a href="index.php?action=mentions">Mentions légales</a><span> | </span>
-								<a href="index.php?action=espace_perso">Espace Client</a><br>			
-							</p>
+							<?= $menu ?>
 						<h2>Choisissez votre véhicule :</h2>
-							<form action="v_tourisme.php" method="POST" id="form_categorie">
+							<form action="v_tourisme.php" method="POST" id="form_categorie"><!-- formulaire bouton !-->
 								<select name="num_categorie">
 									<option value="1">Citadines</option>
 									<option value="2">Berline</option>

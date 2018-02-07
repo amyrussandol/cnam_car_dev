@@ -33,24 +33,20 @@
 				<div class="col-xs-12">
 					<h1>Mon Compte</h1>
 
-					<p>
-						<a href="index.php?action=accueil">Accueil</a><span> | </span>
-						<a href="index.php?action=agence">Nos agences</a><span> | </span>	
-						<a href="index.php?action=nos_vehicules">Nos véhicules</a><span> | </span>	
-						<a href="index.php?action=cnam_car">Qui sommes nous</a><span> | </span>
-						<a href="index.php?action=faq">FAQ</a><span> | </span>
-						<a href="index.php?action=mentions">Mentions légales</a><span> | </span>
-						<a href="index.php?action=espace_perso">Espace Client</a><br>			
-					</p>
+					<?= $menu ?>
+					
 					<?php if(!empty($_SESSION['login'])){ ?>
 
 					<h2>Votre Identifiant : </h2>
 
 						<p><?= $_SESSION['login'] ?></p>
-					<?php } ?>
+
 					<form action="deconnexion.php" method="post">
 						<input type="submit" name="annulation" value="deconnexion">
 					</form>
+					
+					<?php } ?>
+
 
 					<?= $compte_formulaire ?>
 					<?= $compte_fidele ?>

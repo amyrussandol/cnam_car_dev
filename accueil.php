@@ -3,7 +3,36 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Acccueil</title>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+ 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+ <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <script src="bootstrap/js/jquery-3.3.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script type = "text/javascript">
+			function verif(unForm){
+				var noms = unForm.age.value;
+				var message = "";
+				var ok = false;
+
+				if (age <= 0){
+					message = "N'importe quoi !!";		
+				} else if(age <18) {
+					message = "Tu n'es pas majeur mais c'est bon on envoie !";
+					ok = true;
+				} else if(age <= 60){
+					message = "Non!";		
+				}else if(age <= 120){
+					message = "Vous êtes senior";		
+				}else if(120 < age){
+					message = "Est ce bien possible ?";		
+				}else{
+					message = "Tu dois rentrer un nombre";		
+				}
+				document.getElementById("conclusion").innerHTML = message;
+				return ok ;
+			}
+		</script>
 	</head>
 	<body>
 		<div class="container">
@@ -11,24 +40,20 @@
 				<div class="col-xl-12">
 					<h1>CNAM-CAR-Accueil</h1>
 					<p>Vous souahitez louer une voiture ? vous êtez au bon endroit !</p>
-					<p>
-						<a href="index.php?action=accueil">Accueil</a><span> | </span>
-						<a href="index.php?action=agence">Nos agences</a><span> | </span>	
-						<a href="index.php?action=nos_vehicules">Nos véhicules</a><span> | </span>	
-						<a href="index.php?action=cnam_car">Qui sommes nous</a><span> | </span>
-						<a href="index.php?action=faq">FAQ</a><span> | </span>
-						<a href="index.php?action=mentions">Mentions légales</a><span> | </span>
-						<a href="index.php?action=espace_perso">Espace Client</a><br>			
-					</p>
+					<?= $menu ?>
+			
 					<?php if(!empty($_SESSION['login'])){ ?>
 
 						<h2>Votre Identifiant : </h2>
 
-							<p><?= $_SESSION['login'] ?>
+							<?= $_SESSION['login'] ?>
+
+						<form action="deconnexion.php" method="post">
+							<input type="submit" name="annulation" value="deconnexion">
+						</form>
+						
 					<?php } ?>
-					<form action="deconnexion.php" method="post">
-						<input type="submit" name="annulation" value="deconnexion">
-					</form></p>
+					
 					<form action="index.php?action=vehicules" method="post">
 						<legend>Executer une recherche : </legend>
 								<label for="ag_depart">Agence de départ : </label>

@@ -26,11 +26,13 @@ function selectTourisme($ag_depart)
 {
 	$tourisme = getTourisme($ag_depart);
 	require('menu.php');
+	require('menu.php');
 	require('v_tourisme.php');
 }
 function selectUtilitaire($ag_depart)
 {
 	$utilitaire = getUtilitaire($ag_depart);
+	require('menu.php');
 	require('menu.php');
 	require('v_utilitaire.php');
 }
@@ -91,22 +93,27 @@ function afficheValidationPaiement()
 }
 function afficheVehicules()
 {
+	require('menu.php');
 	require('vehicules.php');
 }
 function afficheFAQ()
 {
+	require('menu.php');
 	require('faq.php');
 }
 function afficheAgence()
 {
+	require('menu.php');
 	require('agences.php');
 }
 function afficheCnamcar()
 {
+	require('menu.php');
 	require('qui_sommes_nous.php');
 }
 function afficheMentions()
 {
+	require('menu.php');
 	require('mentions_legales.php');
 }
 function afficheTest()
